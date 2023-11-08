@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+      <form action="/signup/" method="post" class="w-50 shadow-lg p-2 mx-auto mt-2">
+        {% csrf_token %}
+        <label for="fname" class="d-block">First Name</label>
+        <input type="text" id="fname" name="fname" class="form-control mb-2"/>
+        <label for="lname" class="d-block">Last Name</label>
+        <input type="text" id="lname" name="lname" class="form-control mb-2"/>
+        <label for="Email" class="d-block">Email</label>
+        <input type="email" id="email" name="email" class="form-control mb-2"/>
+        <label for="password" class="d-block">Password</label>
+        <input type="password" id="password" name="password" class="form-control mb-2"/>
+        <label for="confirmpassword" class="d-block">Confirm Password</label>
+        <input type="password" id="confirmpassword" name="confirmpassword" class="form-control mb-2"/>
+        <input type="submit" class="btn btn-success" value="Sign Up">
+      </form>
+{% endblock content %}

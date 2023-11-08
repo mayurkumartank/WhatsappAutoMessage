@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WhatsApp Message || વોટ્સએપ મેસેજ || व्हाट्सएप मैसेज</title>
+    <meta name="description" content="કોઈપણ તહેવાર પર, શું તમે તમારા વોટ્સએપ પર એક જ સમયે એકથી વધુ લોકોને મેસેજ અને ફોટા મોકલવા માંગો છો, તો પછી તમે કોઈપણ ચાર્જ ચૂકવ્યા વિના તમારા WhatsApp પરથી હમણાં જ મેસેજ મોકલી શકો છો.">
+    <meta name="description" content="On any festival, do you want to send messages and photos to more than one person on your WhatsApp at the same time, then you can send messages from your WhatsApp right now without paying any charge, then start sending messages from your WhatsApp as soon.">
+    <meta name="description" content="क्या आप किसी भी त्यौहार पर अपने व्हाट्सएप पर एक ही समय में एक से अधिक लोगों को मैसेज और फोटो भेजना चाहते हैं, तो आप अभी बिना कोई चार्ज दिए अपने व्हाट्सएप से मैसेज भेज सकते हैं, तो जल्द ही अपने व्हाट्सएप से मैसेज भेजना शुरू करें ">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <div class="bg-success p-2">
+      <ul class="d-flex list-unstyled">
+        
+        <li class="p-2"><a href="/" class="text-white text-decoration-none">Home</a></li>
+        {% if request.user.is_authenticated %}
+          <li class="p-2"><a href="/logout/" class="text-white text-decoration-none">Logout</a></li>
+        {% else %}
+          <li class="p-2"><a href="/login/" class="text-white text-decoration-none">Login</a></li>
+          <li class="p-2"><a href="/signup/" class="text-white text-decoration-none">Sign Up</a></li>
+        {% endif %}
+      </ul>
+    </div>
+    {% for message in messages %}
+          <div class="alert {{ message.tags }} alert-dismissible" role="alert" id="messagepopup">
+            <p style="text-align: center;">{{ message }}</p>
+          </div>
+    {% endfor %}
+    {% block content %}{% endblock %}
+    
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        var messageDisplayTime = 5000; 
+
+        $(".alert#messagepopup").each(function(index) {
+          var alert = $(this);
+          setTimeout(function() {
+            alert.fadeOut();
+          }, messageDisplayTime);
+        });
+      });
+    </script>
+
+  </body>
+</html>

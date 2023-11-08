@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+      <form action="/login/" method="post" class="w-50 shadow-lg p-2 mx-auto mt-2">
+        {% csrf_token %}
+        <label for="Email" class="d-block">Email</label>
+        <input type="email" id="email" name="email" class="form-control mb-2"/>
+        <label for="password" class="d-block">Password</label>
+        <input type="password" id="password" name="password" class="form-control mb-2"/>
+        <input type="submit" class="btn btn-success" value="Login">
+      </form>
+{% endblock content %}
